@@ -54,10 +54,12 @@ def compile_wast(source_files, include_foders, destination_foder, output_name, s
         if returncode != 0:
             return returncode
         link_cmd = link_cmd + ' ' + bcfile
-    print('linking ', output_name, ' ......')
+
+    print('Linking ', output_name, ' ......')
     returncode = callcmd(link_cmd)
     if returncode != 0:
         return returncode
+
     print('COMPLETE！')
-    return returncode
+    return 0
 
