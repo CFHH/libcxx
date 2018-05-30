@@ -47,9 +47,12 @@ source_files.append(os.path.join(source_folder, 'vector.cpp'))
 libc_dir = r"E:\Github\libc"
 include_foders = []
 include_foders.append(os.path.join(base_path, r"include"))
-include_foders.append(os.path.join(base_path, r"..\libc\include"))
+include_foders.append(os.path.join(libc_dir, r"include"))
+include_foders.append(os.path.join(libc_dir, r"arch\wasm"))
 system_include_foders = []
 system_include_foders.append(os.path.join(base_path, r"include"))
+system_include_foders.append(os.path.join(libc_dir, r"include"))
+system_include_foders.append(os.path.join(libc_dir, r"arch\wasm"))
 
 
 '''

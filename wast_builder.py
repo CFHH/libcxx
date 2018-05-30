@@ -34,7 +34,11 @@ def compile_wast(source_files, include_foders, destination_foder, output_name, s
         compile_cmd_common = compile_cmd_common + " -isystem " + folder
     link_cmd = 'llvm-link -o ' + os.path.join(destination_foder, output_name)
 
+    cnt = len(source_files)
+    i = 0
     for file in source_files:
+        i = i + 1
+        print('Compiling file [', i, '/', cnt, ']: ', file, ' ......')
         clang_cmd = compile_cmd_common
         st = os.path.splitext(file)
         t = os.path.split(st[0])
@@ -50,6 +54,10 @@ def compile_wast(source_files, include_foders, destination_foder, output_name, s
         if returncode != 0:
             return returncode
         link_cmd = link_cmd + ' ' + bcfile
+    print('linking ', output_name, ' ......')
     returncode = callcmd(link_cmd)
+    if returncode != 0:
+        return returncode
+    print('COMPLETE！')
     return returncode
 
